@@ -1,0 +1,42 @@
+```mermaid
+graph TD
+    subgraph Source["Source Control"]
+        Git[GitHub/CodeCommit]
+        PR[Pull Request]
+    end
+
+    subgraph Pipeline["CI/CD Pipeline"]
+        Build[Build Stage]
+        Test[Test Stage]
+        SAST[SAST Scan]
+        SCA[SCA Scan]
+        Container[Container Scan]
+        Deploy[Deploy Stage]
+    end
+
+    subgraph Security["Security Tools"]
+        Semgrep[Semgrep]
+        Snyk[Snyk]
+        Inspector[Inspector]
+        SecHub[Security Hub]
+    end
+
+    subgraph Artifacts["Artifacts"]
+        ECR[ECR Registry]
+        S3[S3 Artifacts]
+    end
+
+    Git --> Build
+    PR --> SAST
+    Build --> Test
+    Test --> SAST
+    SAST --> Semgrep
+    SAST --> SCA
+    SCA --> Snyk
+    SCA --> Container
+    Container --> Inspector
+    Container --> ECR
+    Inspector --> SecHub
+    ECR --> Deploy
+    Deploy --> S3
+```

@@ -1,0 +1,39 @@
+```mermaid
+graph LR
+    subgraph Input["Code Input"]
+        Code[Source Code]
+        Deps[Dependencies]
+        Config[IaC Config]
+    end
+
+    subgraph Scan["Security Scanning"]
+        SAST[Static Analysis]
+        SCA[Dependency Scan]
+        IaC[IaC Scan]
+        Secrets[Secret Detection]
+    end
+
+    subgraph Gate["Security Gate"]
+        Policy[Policy Engine]
+        Threshold[Severity Threshold]
+    end
+
+    subgraph Output["Output"]
+        Pass[Deploy]
+        Fail[Block]
+        Report[Security Report]
+    end
+
+    Code --> SAST
+    Deps --> SCA
+    Config --> IaC
+    Code --> Secrets
+    SAST --> Policy
+    SCA --> Policy
+    IaC --> Policy
+    Secrets --> Policy
+    Policy --> Threshold
+    Threshold --> Pass
+    Threshold --> Fail
+    Policy --> Report
+```

@@ -1,0 +1,24 @@
+```mermaid
+sequenceDiagram
+    participant Dev as Developer
+    participant Git as Git Repo
+    participant CI as CodePipeline
+    participant Scan as Security Scans
+    participant Hub as Security Hub
+
+    Dev->>Git: Push code
+    Git->>CI: Trigger pipeline
+    CI->>CI: Build & test
+    CI->>Scan: Run SAST
+    Scan-->>CI: Results
+    CI->>Scan: Run SCA
+    Scan-->>CI: Results
+    CI->>Scan: Container scan
+    Scan-->>Hub: Report findings
+    
+    alt All scans pass
+        CI->>CI: Deploy to staging
+    else Security gate fails
+        CI-->>Dev: Block + notify
+    end
+```

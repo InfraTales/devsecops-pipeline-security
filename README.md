@@ -1,4 +1,4 @@
-# DevSecOps Pipeline Security
+# InfraTales | DevSecOps Pipeline Security – Shift-Left Scanning in CI/CD
 
 > **Security scanning at every CI/CD stage with SAST, DAST, SCA, container scanning, secrets detection, compliance checks, and automated remediation**
 
@@ -382,3 +382,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines
 <p align="center">
   Made with ❤️ by Rahul Ladumor
 </p>
+
+<div align="center">
+  <a href="https://infratales.com">Website</a> •
+  <a href="https://infratales.com/projects">Projects</a> •
+  <a href="https://infratales.com/premium">Premium</a> •
+  <a href="https://infratales.com/newsletter">Newsletter</a>
+</div>
